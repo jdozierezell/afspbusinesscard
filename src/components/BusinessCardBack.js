@@ -45,8 +45,8 @@ const BusinessCardFront = ({data, width, height}) => {
         let measureCityStateZip
         let lines = 0
 
-        setRatio(width / (3.5 * 72))
-        setImageRatio(width / (3.5 * 300))
+        setRatio(width / (3.62 * 72))
+        setImageRatio(width / (3.62 * 300))
         
         if (!document.getElementById('measureAddress1')) {
             measureAddress1 = document.createElement('span')
@@ -99,7 +99,7 @@ const BusinessCardFront = ({data, width, height}) => {
             <Layer>
                 <Rect x={0} y={0} width={width} height={height} fill={white}/>
                 <Group 
-                    x= {((width) - (imageWidth * imageRatio + (6 * ratio * 2) + (addressWidth * ratio))) / 2}
+                    x= {((width) - ((imageWidth * imageRatio) + (6 * ratio * 2) + (addressWidth * ratio))) / 2}
                     y={(height / 2) - (imageHeight * imageRatio / 2)}>
                     <KonvaImage 
                         image={image} 
@@ -108,18 +108,17 @@ const BusinessCardFront = ({data, width, height}) => {
                         x={0}
                         // x={(width / 2) - (imageWidth * imageRatio) - (8 * ratio)} 
                          />
-                        {addressWidth > 0 && <Line x={imageWidth * imageRatio + (6 * ratio)} points={[0, 0, 0, imageHeight * imageRatio]} stroke="#262626" strokeWidth={1} />}
+                    {addressWidth > 0 && <Line x={imageWidth * imageRatio + (6 * ratio)} points={[0, 0, 0, imageHeight * imageRatio]} stroke="#262626" strokeWidth={1} />}
                     <Group
                         fill={gray}
                         // x={(width / 2) + (8 * ratio)}
                         x={imageWidth * imageRatio + (6 * ratio * 2)}
                         y={(imageHeight * imageRatio / 2 - (addressLines * 12 / 2))}
-                        width={width / 2 - 18}
-                        // width={22 * }
+                        width={width / 2 - 23}
                         clip={{
                             x: 0,
                             y: 0,
-                            width: width / 2 - 36,
+                            width: width / 2 - 23,
                             height: addressLines * 12 * ratio
                         }}>
                         <Text

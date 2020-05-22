@@ -2,7 +2,8 @@
 // eslint-disable-next-line
 import React, { useState, useRef, useEffect } from 'react'
 import { jsx, css } from '@emotion/core'
-import jsPDF from 'jspdf'
+import DocRaptor from './utils/docraptor_mod'
+import useImage from 'use-image'
 
 import BusinessForm from './components/BusinessForm'
 import BusinessCardFront from './components/BusinessCardFront'
@@ -47,6 +48,11 @@ function App() {
     const [width, setWidth] = useState(0)
     const [height, setHeight] = useState(0)
     const [data, setData] = useState({})
+    const [print, setPrint] = useState(false)
+    const [cardFront, setCardFront] = useState(null)
+    const [cardFrontImage] = useImage(cardFront)
+    const [cardBack, setCardBack] = useState(null)
+    const [cardBackImage] = useImage(cardBack)
     const cardRef = useRef(null)
 
     const setStateDimensions = () => {
@@ -54,42 +60,20 @@ function App() {
       const containerWidth = container.offsetWidth
       if (containerWidth < 400) {
         setWidth(window.innerWidth - 48)
-        setHeight((window.innerWidth - 48) * (2 / 3.62))
+        setHeight((window.innerWidth - 48) * (2.12 / 3.62))
       } else if (containerWidth < 1083) {
         setWidth(containerWidth)
-        setHeight(containerWidth * 2 / 3.62)
+        setHeight(containerWidth * 2.12 / 3.62)
       } else {
         setWidth(1083)
         setHeight(633)
       }
     }
-    const createPDF = (data) => {
-      const cards = document.getElementsByTagName('canvas')
-      const pdfFront = new jsPDF({
-        orientation: 'landscape',
-        unit: 'in',
-        format: [261, 153]
-      })
-      const pdfBack = new jsPDF({
-        orientation: 'landscape',
-        unit: 'in',
-        format: [300, 300]
-      })
-      const cardFront = cards[0].toDataURL()
-      const cardBack = cards[1].toDataURL()
-      pdfFront.addImage(cardFront,
-        0, // x coord
-        0, // y coord
-        3.62, // width
-        2.12) //height
-      pdfBack.addImage(cardBack,
-        0, // x coord
-        0, // y coord
-        3.62, // width
-        2.12) //height
-      pdfFront.save('businessCardFront.pdf')
-      pdfBack.save('businessCardBack.pdf')
+    
+    const createPDF = () => {
+      setPrint(true)
     }
+
     const onInputChange = (e) => {
         switch(e.target.name) {
           case 'name':
@@ -138,20 +122,35 @@ function App() {
           return
       }
     }
+
     useEffect(() => {
-		// set image coordinates to center based on width and height
+      if (print) {
+        const cards = document.getElementsByTagName('canvas')
+        setCardFront(cards[0].toDataURL())
+        setCardBack(cards[1].toDataURL())
+      }
+      if (cardFrontImage && cardBackImage) {
+      DocRaptor.createAndDownloadDoc('nnuiFL08ehM6NeY2NhU', {
+        test: true, // test documents are free, but watermarked
+        type: 'pdf',
+        document_content: `<html><head><style type="text/css">@page { margin: 0; size: 3.62in 2.12in; } img { width: 3.62in; height: 2.12in; }</style></head><body><img src="${cardFrontImage.src}" /><img src="${cardBackImage.src}" /></body></html>`
+      })
+        setPrint(false)
+        setCardFront(null)
+        setCardBack(null)
+      }
+		  // set image coordinates to center based on width and height
       window.addEventListener('resize', setStateDimensions)
       setStateDimensions()
       return () => window.removeEventListener('resize', setStateDimensions)
-    },[])
-
+    },[cardBackImage, cardFrontImage, print])
 
   return (
     <div css={appCSS} className="App">
       <div css={formCSS}>
         <BusinessForm 
           data={data}
-          createPDF={createPDF} 
+          createPDF={createPDF}
           onInputChange={onInputChange} 
           onSelectChange={onSelectChange} />
       </div>
@@ -160,7 +159,7 @@ function App() {
         <BusinessCardBack data={data} width={width} height={height} id="businessCardBack" />
       </div>
     </div>
-  );
+  )
 }
 
 export default App;

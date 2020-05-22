@@ -31,43 +31,43 @@ console.log(ratio)
                     fontFamily={paul}
                     fontSize={10 * ratio}
                     fill={white}
-                    x={18 * ratio}
-                    y={18 * ratio}
-                    width={width - (18 * ratio)}
+                    x={23 * ratio}
+                    y={23 * ratio}
+                    width={width - (23 * ratio)}
                 />
                 <Text
                     text={data.title}
                     fontFamily={avenir}
                     fontSize={10 * ratio}
                     fill={white}
-                    x={18 * ratio}
-                    y={32 * ratio}
-                    width={width - (18 * ratio)}
+                    x={23 * ratio}
+                    y={38 * ratio}
+                    width={width - (23 * ratio)}
                 />
                 <Text
                     text={data.email}
                     fontFamily={avenir}
                     fontSize={10 * ratio}
                     fill={white}
-                    x={18 * ratio}
-                    y={72 * ratio}
-                    width={width - (18 * ratio)}
+                    x={23 * ratio}
+                    y={77 * ratio}
+                    width={width - (23 * ratio)}
                 />
                 <Text
                     text={data.phone}
                     fontFamily={avenir}
                     fontSize={10 * ratio}
                     fill={white}
-                    x={18 * ratio}
-                    y={87 * ratio}
-                    width={width - (18 * ratio)}
+                    x={23 * ratio}
+                    y={92 * ratio}
+                    width={width - (23 * ratio)}
                 />
                 <Group
-                    x={18 * ratio}
-                    y={98 * ratio}
-                    width={width - (18 * ratio)}>
+                    x={23 * ratio}
+                    y={102 * ratio}
+                    width={width - (23 * ratio)}>
                     <Group
-                        x={(width - (40 * ratio) - (44 * ratio))}>
+                        x={(width - (95 * ratio))}>
                         <KonvaImage image={facebook} width={13 * ratio} height={13 * ratio}/>
                         <KonvaImage image={twitter} width={13 * ratio} height={13 * ratio} x={18 * ratio} />
                         <KonvaImage image={instagram} width={13 * ratio} height={13 * ratio} x={36 * ratio} />
@@ -84,7 +84,7 @@ console.log(ratio)
                         fontFamily={avenir}
                         fontSize={10 * ratio}
                         fill={white}
-                        x={(width - (59 * ratio) - (40 * ratio))}
+                        x={(width - (109 * ratio))}
                         y={20 * ratio}
                         width={66 * ratio}
                     />
