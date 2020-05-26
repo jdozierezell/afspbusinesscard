@@ -36,9 +36,6 @@ async function postData(url, data) {
   const response = await fetch(url, {
     method: 'POST',
     body: data,
-    headers: {
-      'Content-Type': 'application/json'
-    }
   });
   return response; // parses JSON response into native JavaScript objects
 }
