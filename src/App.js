@@ -140,7 +140,7 @@ function App() {
       }
       if (cardFrontImage && cardBackImage) {
       DocRaptor.createAndDownloadDoc('nnuiFL08ehM6NeY2NhU', {
-        test: true, // test documents are free, but watermarked
+        test: false, // test documents are free, but watermarked
         type: "pdf",
         document_content: `<html><head><style type="text/css">@page { margin: 0; size: 3.62in 2.12in; } img { width: 3.62in; height: 2.12in; }</style></head><body><img src="${cardFrontImage.src}" /><img src="${cardBackImage.src}" /></body></html>`
       })
