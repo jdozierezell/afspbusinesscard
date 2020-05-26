@@ -156,7 +156,7 @@ function App() {
 
   return (
     <div css={appCSS} className="App">
-      <p css={instructionsCSS}>Complete the fields below to create your printable business card. Please check the PDF you download for any errors or issues as this is the file that will be printed at home, online, or by your local printer. Depending on your internet connection speed, creating your card may take up to 15-20 seconds.</p>
+      <p css={instructionsCSS}>Complete the fields below to create your printable business card. Please check the PDF you download for any errors or issues as this is the file that will be printed at home, online, or by your local printer. If you're not sure where to print, we recommend <a href="https://vistaprint.com/business-cards/standard?xnid=TopNav_Standard+Business+Cards_Standard+Business+Cards_Business+Cards&xnav=TopNav" target="_blank" rel="noreferrer noopener">Vistaprint</a>. Depending on your internet connection speed, creating your card may take up to 15-20 seconds.</p>
       <div css={formCSS}>
         <BusinessForm 
           data={data}
