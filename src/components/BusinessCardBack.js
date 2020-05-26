@@ -23,7 +23,7 @@ const BusinessCardFront = ({data, width, height}) => {
         address2 = '11th Floor'
         city = 'New York'
         state = 'NY'
-        zipCode = 10034
+        zipCode = 10038
     } else if (data.location === 'DC') {
         address1 = '440 First Street, NW'
         address2 = 'Suite 300'
