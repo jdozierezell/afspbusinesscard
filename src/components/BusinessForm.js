@@ -52,6 +52,7 @@ const formCSS = css`
     }
     input[type=submit] {
         margin-top: 48px;
+        cursor: pointer;
     }
     span {
         color: #eb1426;
@@ -149,7 +150,7 @@ const BusinessForm = ({data, createPDF, onInputChange, onSelectChange}) => {
                     }
                 </>
             }
-            <input type="submit" value="Download PDF"/>
+            <input type="submit" value="Download PDF" />
         </form>
     )
 }
