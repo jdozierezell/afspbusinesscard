@@ -8,7 +8,7 @@ import Select from 'react-select'
 import Toggle from 'react-toggle'
 import * as Yup from 'yup'
 
-import locations from '../utils/locations'
+import affiliations from '../utils/affiliations'
 import chapters from '../utils/chapters'
 import states from '../utils/states'
 
@@ -73,7 +73,6 @@ const BusinessForm = ({data, createPDF, onInputChange, onSelectChange}) => {
     const [showAddress, setShowAddress] = useState(false)
 
     const submitForm = () => {
-        console.log('foo')
         createPDF()
     }
     
@@ -87,19 +86,19 @@ const BusinessForm = ({data, createPDF, onInputChange, onSelectChange}) => {
             <input ref={register} type="email" name="email" id="email" onChange={onInputChange} />
             <label htmlFor="phone">Phone Number</label>
             <input ref={register} type="text" name="phone" id="phone" onChange={onInputChange} />
-            <label id="location" htmlFor="location">Choose Your Location</label>
+            <label id="affiliation" htmlFor="affiliation">Choose Your Affiliation</label>
             <Controller 
                 as={Select}
                 className="react-select__control"
                 classNamePrefix="react-select"
-                name="location"
+                name="affiliation"
                 control={control}
-                options={locations}
-                value={data.location}
+                options={affiliations}
+                value={data.affiliation}
                 onChange={data => {
                     onSelectChange(data)
                 }} />
-            {data.location === 'Chapter' && 
+            {data.affiliation === 'Chapter' && 
                 <>
                     <label htmlFor="chapter">Chapter</label>
                     <Controller 

@@ -17,9 +17,7 @@ const BusinessCardFront = ({data, width, height}) => {
     const paul = 'PaulGroteskSoft-Bold'
     const avenir = 'AvenirNextLTPro-Regular'
     const white = 'white'
-console.log(ratio)
     useEffect(() => {
-        console.log(`${width} x ${height}`)
         setRatio(width / (3.62 * 72))
     },[width, height])
     return (
@@ -73,7 +71,7 @@ console.log(ratio)
                         <KonvaImage image={instagram} width={13 * ratio} height={13 * ratio} x={36 * ratio} />
                     </Group>
                     <Text
-                        text={`afsp.org${data.location === 'Chapter' && data.url ? `/${data.url}` : ''}`}
+                        text={`afsp.org${data.affiliation === 'Chapter' && data.url ? `/${data.url}` : ''}`}
                         fontFamily={paul}
                         fontSize={10 * ratio}
                         fill={white}

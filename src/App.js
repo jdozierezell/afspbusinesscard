@@ -118,8 +118,8 @@ function App() {
         case 'socialChannel':
           setData({...data, socialChannel: e[0].value})
           break
-        case 'location':
-          setData({...data, location: e[0].value})
+        case 'affiliation':
+          setData({...data, affiliation: e[0].value})
           break
         case 'chapter':
           setData({...data, chapter: e[0].value, logo: e[0].logo, url: e[0].url})

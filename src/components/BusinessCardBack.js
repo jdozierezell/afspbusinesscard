@@ -18,19 +18,19 @@ const BusinessCardFront = ({data, width, height}) => {
     const gray = '#262626'
 
     let address1, address2, city, state, zipCode
-    if (data.location === 'NYC') {
+    if (data.affiliation === 'NYC') {
         address1 = '199 Water St.'
         address2 = '11th Floor'
         city = 'New York'
         state = 'NY'
         zipCode = 10038
-    } else if (data.location === 'DC') {
+    } else if (data.affiliation === 'DC') {
         address1 = '440 First Street, NW'
         address2 = 'Suite 300'
         city = 'Washington'
         state = 'D.C.'
         zipCode = 20001
-    } else if (data.location === 'Chapter') {
+    } else if (data.affiliation === 'Chapter') {
         address1 = data.address1
         address2 = data.address2
         city = data.city
@@ -39,7 +39,6 @@ const BusinessCardFront = ({data, width, height}) => {
     }
 
     useEffect(() => {
-        console.log(addressWidth)
         let measureAddress1
         let measureAddress2
         let measureCityStateZip
@@ -90,7 +89,6 @@ const BusinessCardFront = ({data, width, height}) => {
         if (city) {
             lines = lines + 1
         }
-        console.log(lines)
         setAddressLines(lines * ratio)
         
     },[width, height, image, imageHeight, imageWidth, data, addressLines, ratio, address1, address2, city, addressWidth, state, zipCode])
