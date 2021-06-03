@@ -85,7 +85,7 @@ const BusinessCardFront = ({ data, width, height }) => {
 						/>
 					</Group>
 					<Text
-						text={data.url}
+						text={data.url ? `afsp.org/${data.url}` : 'afsp.org'}
 						fontFamily={paul}
 						fontSize={10 * ratio}
 						fill={white}

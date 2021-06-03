@@ -230,6 +230,7 @@ const BusinessForm = ({ data, createPDF, onInputChange, onSelectChange }) => {
 				<span>afsp.org/</span>
 				<input
 					ref={register}
+					value={data.url}
 					type="text"
 					name="URL"
 					id="URL"

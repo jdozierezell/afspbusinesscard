@@ -56,7 +56,7 @@ const cardCSS = css`
 function App() {
 	const [width, setWidth] = useState(0)
 	const [height, setHeight] = useState(0)
-	const [data, setData] = useState({ url: 'afsp.org' })
+	const [data, setData] = useState({})
 	const [print, setPrint] = useState(false)
 	const [cardFront, setCardFront] = useState(null)
 	const [cardFrontImage] = useImage(cardFront)
@@ -84,6 +84,7 @@ function App() {
 	}
 
 	const onInputChange = e => {
+		console.log(e.target.value)
 		switch (e.target.name) {
 			case 'name':
 				setData({ ...data, name: e.target.value })
@@ -112,10 +113,7 @@ function App() {
 			case 'URL':
 				setData({
 					...data,
-					url:
-						e.target.value.length > 0
-							? `afsp.org/${e.target.value}`
-							: `afsp.org`,
+					url: e.target.value,
 				})
 				break
 			default:
@@ -135,7 +133,7 @@ function App() {
 					...data,
 					chapter: e[0].value,
 					logo: e[0].logo,
-					url: `afsp.org/${e[0].url}`,
+					url: e[0].url,
 				})
 				break
 			case 'state':
@@ -171,7 +169,6 @@ function App() {
 
 	return (
 		<div css={appCSS} className="App">
-			{console.log(data)}
 			<p css={instructionsCSS}>
 				Complete the fields below to create your printable business
 				card. Please check the PDF you download for any errors or issues

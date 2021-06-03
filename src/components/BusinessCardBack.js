@@ -22,7 +22,7 @@ const BusinessCardFront = ({ data, width, height }) => {
 			imageFileName = `https://aws-fetch.s3.amazonaws.com/logos/businesscards/AFSP_LogoLockup_Campus_Walks_${data.logo}_CMYK.png`
 			break
 		case 'Out of the Darkness Community Walk':
-			imageFileName = `https://aws-fetch.s3.amazonaws.com/logos/businesscards/AFSP_LogoLockup_Community_Walks${data.logo}_CMYK.png`
+			imageFileName = `https://aws-fetch.s3.amazonaws.com/logos/businesscards/AFSP_LogoLockup_Community_Walks_${data.logo}_CMYK.png`
 			break
 		case 'NYC':
 		case 'DC':
@@ -125,10 +125,9 @@ const BusinessCardFront = ({ data, width, height }) => {
 				measureCityStateZip.offsetWidth,
 			])
 		)
-
 		if (image) {
-			setImageWidth(image.width)
-			setImageHeight(image.height)
+			setImageWidth((image.width * 1) / 3)
+			setImageHeight((image.height * 1) / 3)
 		}
 		if (address1) {
 			lines = lines + 1
