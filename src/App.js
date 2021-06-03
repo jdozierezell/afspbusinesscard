@@ -203,6 +203,7 @@ function App() {
 					height={height}
 					id="businessCardFront"
 				/>
+				{console.log(data)}
 				<BusinessCardBack
 					data={data}
 					width={width}

@@ -13,12 +13,32 @@ import useImage from 'use-image'
 import nationalLogo from '../images/national.jpg'
 
 const BusinessCardFront = ({ data, width, height }) => {
-	const [image] = useImage(
-		data.logo
-			? `https://aws-fetch.s3.amazonaws.com/logos/businesscards/${data.logo}.jpg`
-			: nationalLogo,
-		'Anonymous'
-	)
+	let imageFileName
+	switch (data.affiliation) {
+		case 'Chapter':
+			imageFileName = `https://aws-fetch.s3.amazonaws.com/logos/businesscards/AFSP_ChapterLogoLockup_${data.logo}_CMYK.png`
+			break
+		case 'Out of the Darkness Campus Walk':
+			imageFileName = `https://aws-fetch.s3.amazonaws.com/logos/businesscards/AFSP_LogoLockup_Campus_Walks_${data.logo}_CMYK.png`
+			break
+		case 'Out of the Darkness Community Walk':
+			imageFileName = `https://aws-fetch.s3.amazonaws.com/logos/businesscards/AFSP_LogoLockup_Community_Walks${data.logo}_CMYK.png`
+			break
+		case 'NYC':
+		case 'DC':
+		default:
+			imageFileName = `https://aws-fetch.s3.us-east-1.amazonaws.com/logos/businesscards/AFSP_Logo_CMYK.png`
+	}
+	if (!data.chapter) {
+		if (data.affiliation === 'Out of the Darkness Campus Walk') {
+			imageFileName =
+				'https://aws-fetch.s3.us-east-1.amazonaws.com/logos/businesscards/AFSP_LogoLockup_Campus_Walks_CMYK.png'
+		} else if (data.affiliation === 'Out of the Darkness Community Walk') {
+			imageFileName =
+				'https://aws-fetch.s3.us-east-1.amazonaws.com/logos/businesscards/AFSP_LogoLockup_Community_Walks_CMYK.png'
+		}
+	}
+	const [image] = useImage(imageFileName, 'Anonymous')
 	const [imageWidth, setImageWidth] = useState(0)
 	const [imageHeight, setImageHeight] = useState(0)
 	const [addressLines, setAddressLines] = useState(0)
@@ -49,7 +69,10 @@ const BusinessCardFront = ({ data, width, height }) => {
 		city = data.city
 		state = data.state
 		zipCode = data.zipCode
-	} else if (data.affiliation === 'Out of the Darkness') {
+	} else if (
+		data.affiliation === 'Out of the Darkness Campus Walk' ||
+		data.affiliation === 'Out of the Darkness Community Walk'
+	) {
 		address1 = null
 		address2 = null
 		city = null
