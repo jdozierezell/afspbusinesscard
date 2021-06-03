@@ -84,7 +84,6 @@ function App() {
 	}
 
 	const onInputChange = e => {
-		console.log(e.target.value)
 		switch (e.target.name) {
 			case 'name':
 				setData({ ...data, name: e.target.value })
@@ -200,7 +199,6 @@ function App() {
 					height={height}
 					id="businessCardFront"
 				/>
-				{console.log(data)}
 				<BusinessCardBack
 					data={data}
 					width={width}
