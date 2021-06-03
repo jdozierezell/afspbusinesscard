@@ -139,7 +139,8 @@ const BusinessForm = ({ data, createPDF, onInputChange, onSelectChange }) => {
 				}}
 			/>
 			{(data.affiliation === 'Chapter' ||
-				data.affiliation === 'Out of the Darkness') && (
+				data.affiliation === 'Out of the Darkness Campus Walk' ||
+				data.affiliation === 'Out of the Darkness Community Walk') && (
 				<>
 					<label htmlFor="chapter">Chapter</label>
 					<Controller
