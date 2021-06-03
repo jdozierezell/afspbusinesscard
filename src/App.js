@@ -110,7 +110,13 @@ function App() {
 				setData({ ...data, zipCode: e.target.value })
 				break
 			case 'URL':
-				setData({ ...data, url: `afsp.org/${e.target.value}` })
+				setData({
+					...data,
+					url:
+						e.target.value.length > 0
+							? `afsp.org/${e.target.value}`
+							: `afsp.org`,
+				})
 				break
 			default:
 				return
@@ -129,7 +135,7 @@ function App() {
 					...data,
 					chapter: e[0].value,
 					logo: e[0].logo,
-					url: e[0].url,
+					url: `afsp.org/${e[0].url}`,
 				})
 				break
 			case 'state':

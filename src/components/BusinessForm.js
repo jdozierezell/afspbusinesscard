@@ -6,7 +6,6 @@ import { jsx, css } from '@emotion/core'
 import { useForm, Controller } from 'react-hook-form'
 import Select from 'react-select'
 import Toggle from 'react-toggle'
-import * as Yup from 'yup'
 
 import affiliations from '../utils/affiliations'
 import chapters from '../utils/chapters'
@@ -42,10 +41,17 @@ const formCSS = css`
 	> input {
 		line-height: 1rem;
 	}
-	#urlWrapper input {
-		text-align: left;
+	#urlWrapper {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		align-items: center;
+		input {
+			text-align: left;
+		}
 		span {
 			vertical-align: center;
+			padding-right: 0.5rem;
+			font-family: 'AvenirNextLTPro-Demi';
 		}
 	}
 	> .react-select__control {
@@ -65,10 +71,6 @@ const formCSS = css`
 	input[type='submit'] {
 		margin-top: 48px;
 		cursor: pointer;
-	}
-	span {
-		color: #eb1426;
-		font-family: 'AvenirNextLTPro-Regular';
 	}
 	#showSocialLabel {
 		display: inline-block;
@@ -223,13 +225,7 @@ const BusinessForm = ({ data, createPDF, onInputChange, onSelectChange }) => {
 				</>
 			)}
 			<label htmlFor="URL">URL</label>
-			<div
-				id="urlWrapper"
-				css={css`
-					display: grid;
-					grid-template-columns: auto 1fr;
-				`}
-			>
+			<div id="urlWrapper">
 				<span>afsp.org/</span>
 				<input
 					ref={register}
@@ -237,9 +233,6 @@ const BusinessForm = ({ data, createPDF, onInputChange, onSelectChange }) => {
 					name="URL"
 					id="URL"
 					onChange={onInputChange}
-					css={css`
-						display: inline-block !important;
-					`}
 				/>
 			</div>
 			<input type="submit" value="Download PDF" />
