@@ -42,7 +42,7 @@ console.log(ratio)
                     fill={white}
                     x={23 * ratio}
                     y={38 * ratio}
-                    width={width - (92 * ratio)} // was previously 23 but decreased width to help with wrapping
+                    width={width - (23 * ratio)}
                 />
                 <Text
                     text={data.email}
